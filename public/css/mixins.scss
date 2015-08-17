@@ -1,0 +1,15 @@
+@mixin prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+@mixin outline-text($color:#000, $width:1px, $spread:0){
+  text-shadow:
+  (-$width) (-$width) $spread $color, 
+  $width (-$width) $spread $color, 
+  (-$width) $width $spread $color, 
+  $width  $width $spread $color
+}

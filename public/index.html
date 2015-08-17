@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html ng-app="smite" ng-cloak>
+  <head>
+    <title>Smite Strat Randomizer</title>
+    <script src="/js/bundle.js"></script>
+    <script src="/js/app.js"></script>
+    <link type="text/css" href="/css/main.css" rel="stylesheet">
+  </head>
+  <body ng-controller="mainController">
+    <div class="container-fluid">
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <img src="images/logo.png" width="400px;" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="god-preview thumb col-xs-6">
+              <div class="border-fill"></div>
+              <div class="content">
+                <img ng-src="/images/thumbs/{{selectedGod.name | fixName}}.jpg" width="70px" />
+                <p>{{selectedGod.name | uppercaseName}}</p>
+              </div>
+            </div>
+            <div class="god-preview stats col-xs-6">
+              <div class="border-fill"></div>
+              <div class="content">
+                <p>{{selectedGod.damage}}</p>
+                <p>{{selectedGod.role}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn btn-default btn-lg" ng-click="randomize()">Randomize</button>
+          <div class="checkbox">
+            <div class="form-group">
+              <label><input type="checkbox" ng-model="settings.magical">Magical</label>
+              <label><input type="checkbox" ng-model="settings.physical">physical</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+@import 'bootstrap.min.scss';
+@import 'bootstrap-theme.scss';
+@import 'mixins.scss';
+
+body{
+  background: url('/images/bg.png') center;
+  color: #fff;
+}
+
+.god-preview{
+  position: relative;
+  max-width: 50%;
+  height: 118px;
+  background: 
+    url('/images/smallboxleft.png') left top no-repeat,
+    url('/images/smallboxright.png') right top no-repeat;
+  
+    
+  .content{
+    height: 88px;
+    margin-top: 30px;
+    background-image: url('/images/smallboxfill.png');
+    background-repeat: repeat-x;
+  }
+  
+  .border-fill{
+    position: absolute;
+    margin-left: 30px;
+    z-index: -1;
+    height: 30px;
+    width: calc(100% - 100px);
+    background-image: url('/images/smallboxmid.png');
+    background-position: top left;
+    background-repeat: repeat-x;
+    background-clip: padding-box, padding-box, content-box;
+    background-origin: padding-box, padding-box, content-box;
+  }
+  
+  &.thumb{
+    img{
+      margin: 4px;
+      float:left;
+    }
+    p{
+    position: relative;
+    float:left;
+    font-size: 24pt;
+    top:10pt;
+    @include outline-text(#000, 1px, 5px);
+    }
+  }
+  
+  &.stats{
+    p{
+      font-size: 14pt;
+    }
+  }
+}

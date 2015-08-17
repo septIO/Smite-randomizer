@@ -1,0 +1,19 @@
+{
+  "name": "Smite-Randomizer",
+  "version": "1.0.0",
+  "description": "A tool that randomizes game strategies for the game Smite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/septIO/Smite-Randomizer"
+  },
+  "author": "Kasper Laukamp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/septIO/Smite-Randomizer/issues"
+  },
+  "homepage": "https://github.com/septIO/Smite-Randomizer",
+  "dependencies": {
+    "angular": "^1.4.4",
+    "express": "^4.13.3",
+  }
+}
