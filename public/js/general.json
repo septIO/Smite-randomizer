@@ -1,0 +1,46 @@
+[
+
+  {
+    "name" : "Attack Speed $godName",
+    "description" : "You need to build atleast 4 attack speed items into your build",
+    "allowedRole" : ["mage", "guardian"],
+    "allowedPantheon" : "all"
+  },
+  {
+    "name" : "Movement Speed $godName",
+    "description" : "You need to build atleast 4 movement speed items into your build",
+    "allowedRole" : "all",
+    "allowedPantheon" : "all"
+  },
+  {
+    "name" : "Terra Incognita",
+    "description" : "You may only take the opponents jungle buffs",
+    "allowedRole" : "all",
+    "allowedPantheon" : "all"
+  },
+  {
+    "name" : "Cover it all",
+    "description" : "You need 1 physical protection item, 1 magical protection, 1 movement speed item, 1 damage item, 1 stacking item and 1 attack speed item",
+    "allowedRole" : "all",
+    "allowedPantheon" : "all"
+  },
+  {
+    "name" : "What is damage?",
+    "description" : "You may NOT buy any damage increasing items",
+    "allowedRole" : ["mage", "hunter", "assassin"],
+    "allowedPantheon" : "all"
+  },
+  {
+    "name" : "[VSTB]",
+    "description" : "You must return to the base every 4 minutes.",
+    "allowedRole" : "all",
+    "allowedPantheon" : "all"
+  },
+  {
+    "name" : "Jungle Control",
+    "description" : "You cannot kill minions while one of your jungle buffs is up",
+    "allowedRole" : "all",
+    "allowedPantheon" : ["norse"]
+  }
+
+]

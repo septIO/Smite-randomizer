@@ -9,38 +9,67 @@
   <body ng-controller="mainController">
     <div class="container-fluid">
       <div class="col-xs-12 col-md-10 col-md-offset-1">
+        
         <div class="row">
           <div class="col-xs-12 text-center">
             <img src="images/logo.png" width="400px;" />
           </div>
         </div>
+        
         <div class="row">
           <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <div class="god-preview thumb col-xs-6">
+            <div class="god-preview thumb small-box col-xs-6 col-xl-4">
               <div class="border-fill"></div>
               <div class="content">
                 <img ng-src="/images/thumbs/{{selectedGod.name | fixName}}.jpg" width="70px" />
-                <p>{{selectedGod.name | uppercaseName}}</p>
+                <p>{{selectedGod.name}}</p>
               </div>
             </div>
-            <div class="god-preview stats col-xs-6">
+            <div class="god-preview stats small-box col-xs-6 col-xl-4 col-xl-offset-4 pull-right">
               <div class="border-fill"></div>
               <div class="content">
-                <p>{{selectedGod.damage}}</p>
-                <p>{{selectedGod.role}}</p>
+                <p> <img ng-src="/images/{{selectedGod.damage}}.png" width="25px" /> {{selectedGod.damage}}</p>
+                <p> <img ng-src="/images/{{selectedGod.role}}.png" width="25px" /> {{selectedGod.role}}</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <button class="btn btn-default btn-lg" ng-click="randomize()">Randomize</button>
-          <div class="checkbox">
-            <div class="form-group">
-              <label><input type="checkbox" ng-model="settings.magical">Magical</label>
-              <label><input type="checkbox" ng-model="settings.physical">physical</label>
+        
+        <div class="row strat-name-box" ng-show="selectedGod">
+          <div class="col-xs-12 strat-name small-box">
+            <div class="border-fill"></div>
+            <div class="content text-center">
+              <h3>{{selectedStrat.name}}</h3>
+              <small>{{selectedStrat.description}}</small>
             </div>
           </div>
         </div>
+        
+        <div class="row text-center">
+          <button class="btn btn-default btn-lg" ng-click="randomize()">Randomize</button>
+        </div>
+        
+        <div class="row settings pull-right">
+          <div class="checkbox">
+            <table class="table">
+              <tr class="thead">
+                <td colspan="2">Damage Type:</td>
+              </tr>
+              <tr>
+                <td><label><input type="checkbox" ng-model="settings.magical" ng-disabled="!settings.physical">Magical</label></td>
+                <td><label><input type="checkbox" ng-model="settings.physical" ng-disabled="!settings.magical">physical</label></td>
+              </tr>
+              <tr class="thead">
+                <td colspan="2">Strategy Type:</td>
+              </tr>
+              <tr>
+                <td><label><input type="checkbox" ng-model="settings.globalStrats">Global Strats</label></td>
+                <td><label><input type="checkbox" ng-model="settings.godStrats">God Specific Strats</label></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
       </div>
     </div>
   </body>

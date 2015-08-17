@@ -2,40 +2,27 @@
 @import 'bootstrap-theme.scss';
 @import 'mixins.scss';
 
+@font-face{
+  font-family : Trajan Pro;
+  src : url('/fonts/Trajan.otf');
+}
+
 body{
   background: url('/images/bg.png') center;
   color: #fff;
+  font-family: Trajan Pro;
+}
+
+p:first-letter{
+  font-size: 150%;
+}
+
+.row{
+  position: relative;
+  z-index: +1;
 }
 
 .god-preview{
-  position: relative;
-  max-width: 50%;
-  height: 118px;
-  background: 
-    url('/images/smallboxleft.png') left top no-repeat,
-    url('/images/smallboxright.png') right top no-repeat;
-  
-    
-  .content{
-    height: 88px;
-    margin-top: 30px;
-    background-image: url('/images/smallboxfill.png');
-    background-repeat: repeat-x;
-  }
-  
-  .border-fill{
-    position: absolute;
-    margin-left: 30px;
-    z-index: -1;
-    height: 30px;
-    width: calc(100% - 100px);
-    background-image: url('/images/smallboxmid.png');
-    background-position: top left;
-    background-repeat: repeat-x;
-    background-clip: padding-box, padding-box, content-box;
-    background-origin: padding-box, padding-box, content-box;
-  }
-  
   &.thumb{
     img{
       margin: 4px;
@@ -44,7 +31,7 @@ body{
     p{
     position: relative;
     float:left;
-    font-size: 24pt;
+    font-size: 18pt;
     top:10pt;
     @include outline-text(#000, 1px, 5px);
     }
@@ -53,6 +40,62 @@ body{
   &.stats{
     p{
       font-size: 14pt;
+      padding: 7px;
+      margin-bottom: 0;
+      &:not(:first-child){
+        margin:0;
+      }
     }
   }
 }
+
+.strat-name-box{
+  height: 118px;
+  margin-top: -10px;
+  .strat-name{
+    position: relative;
+    margin-top: -10px;
+    height: 118px;
+  }
+  
+}
+
+.small-box{
+  position: relative;
+  height: 118px;
+  background: 
+    url('/images/smallboxleft.png') left top no-repeat,
+    url('/images/smallboxright.png') right top no-repeat;
+  
+  @include border-fill();
+  
+  .content{
+    width: 100%;
+    height: 88px;
+    margin-top: 30px;
+    background-image: url('/images/smallboxfill.png');
+    background-repeat: repeat-x;
+  }
+}
+
+label{
+  @include prefix('user-select', none);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
