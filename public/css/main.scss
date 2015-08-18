@@ -1,11 +1,11 @@
 @import 'bootstrap.min.scss';
 @import 'bootstrap-theme.scss';
 @import 'mixins.scss';
-
 @font-face{
   font-family : Trajan Pro;
   src : url('/fonts/Trajan.otf');
 }
+@include generate-paddings();
 
 body{
   background: url('/images/bg.png') center;
@@ -31,7 +31,7 @@ p:first-letter{
     p{
     position: relative;
     float:left;
-    font-size: 18pt;
+    font-size: 16pt;
     top:10pt;
     @include outline-text(#000, 1px, 5px);
     }
@@ -56,8 +56,34 @@ p:first-letter{
     position: relative;
     margin-top: -10px;
     height: 118px;
+    .content{
+      height:78px; width:100%;
+      display: table;
+      p{
+        font-size: 25pt;
+        display: table-cell;
+        vertical-align: middle;
+        text-align:center;
+      }
+    }
   }
   
+}
+
+.strat-desc-box{
+  height: 261px;
+  position: relative;
+  z-index: 1;
+  .content{
+    position:absolute; height:100%; width:100%;
+    display: table;
+    p{
+      font-size: 18pt;
+      display: table-cell;
+      vertical-align: middle;
+      text-align:center;
+    }
+  }
 }
 
 .small-box{
@@ -75,6 +101,40 @@ p:first-letter{
     margin-top: 30px;
     background-image: url('/images/smallboxfill.png');
     background-repeat: repeat-x;
+  }
+}
+
+.big-box{
+  margin-top: -14px;
+  background: 
+    url('/images/bigboxleft.png') left top no-repeat,
+    url('/images/bigboxright.png') right top no-repeat;
+  
+  .content{
+    position: relative;
+    z-index: -1;
+    margin-top: 5px;
+    width: 100%;
+    height: 255px;
+    background-image: url('/images/bigboxfill.png');
+    background-repeat: repeat-x;
+  }
+  
+  .border-fill{
+    position: absolute;
+    z-index: -10;
+    height: 10px;
+    width: calc(100% - 100px);
+    background-image: url('/images/bigboxmid.png');
+    background-position: top left;
+    background-repeat: repeat-x;
+    background-clip: padding-box, padding-box, content-box;
+    background-origin: padding-box, padding-box, content-box;
+    &:last-child{
+      margin-top: -9px;
+      background-image: url('/images/bigboxbottom.png');
+      background-position: bottom left;
+    }
   }
 }
 

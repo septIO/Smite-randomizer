@@ -1,4 +1,4 @@
-var app = angular.module('smite', []);
+var app = angular.module('smite', ['ngSanitize']);
 
 app.controller('mainController', ['$scope', '$http', function ($scope, $http) {
   $scope.selectedGod;
@@ -6,7 +6,8 @@ app.controller('mainController', ['$scope', '$http', function ($scope, $http) {
     magical : true,
     physical : true,
     globalStrats : true,
-    godStrats : true
+    godStrats : true,
+    god : 'vamana'
   }
   
   var settings = $scope.settings;
@@ -14,7 +15,7 @@ app.controller('mainController', ['$scope', '$http', function ($scope, $http) {
   $http.get('/js/gods.json').then(function(res){
     $scope.gods = res.data;
   });
-  $http.get('/js/general.json').then(function(res){
+  $http.get('/js/strats.json').then(function(res){
     $scope.globalStrats = res.data;
   });
   
@@ -27,7 +28,11 @@ app.controller('mainController', ['$scope', '$http', function ($scope, $http) {
       return;
     }
     
-    strat.name = strat.name.replace(/\$godName/g, g.name);
+    strat.name = strat.name.replace(/\$godName/gi, g.name);
+    strat.description = strat.description.replace(/\$br/gi, '<br />');
+    var m = /\$random (\d)-(\d)/gi.exec(strat.description);
+    
+    if(m)strat.description = strat.description.replace(/\$random \d-\d/g, randomIntFromInterval(parseInt(m[1]), parseInt(m[2])))
     $scope.selectedStrat = strat;
     $scope.selectedGod = g;
   }
@@ -43,13 +48,11 @@ app.controller('mainController', ['$scope', '$http', function ($scope, $http) {
   }
   
   $scope.stratIsAllowed = function(god, strat){
-    console.log(god);
-    console.log(strat);
     var allowed = false;  // assert a reroll from the start
-    
-    allowed = strat.allowedRole == 'all' || strat.allowedRole.indexOf(god.role) !== -1;
-    allowed = strat.allowedPantheon == 'all' || strat.allowedPantheon.indexOf(god.pantheon) !== -1;
-    console.log(allowed);
+    window.t = strat.name;
+    allowed = strat.allowedRoles == 'all' || strat.allowedRoles.indexOf(god.role) !== -1;
+    allowed = strat.allowedPantheons == 'all' || strat.allowedPantheons.indexOf(god.pantheon) !== -1;
+    allowed = strat.allowedGods == 'all' || strat.allowedGods.indexOf(god.name) !== -1;
     
     return allowed;
   }
@@ -74,3 +77,8 @@ String.prototype.capitalize = function(){
         return m.toUpperCase();
     });
 };
+
+function randomIntFromInterval(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}

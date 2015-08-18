@@ -38,9 +38,9 @@
   },
   {
     "name" : "Jungle Control",
-    "description" : "You cannot kill minions while one of your jungle buffs is up",
+    "description" : "You cannot kill minions while one of your jungle buffs is up $range 2-5 - $range 1-3",
     "allowedRole" : "all",
-    "allowedPantheon" : ["norse"]
+    "allowedPantheon" : "all"
   }
 
 ]
